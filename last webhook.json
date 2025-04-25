@@ -1,0 +1,47 @@
+{
+  "message": "Received a request from crypto payments",
+  "request": {
+    "headers": {
+      "accept-encoding": ["gzip, compress, deflate, br"],
+      "user-agent": ["axios/1.8.4"],
+      "x-signature": [
+        "af4b0a91034e94eae4679b3c654ec420edbb52208500df9027a65b6c27f1def6"
+      ],
+      "content-type": ["application/json"],
+      "accept": ["application/json, text/plain, */*"],
+      "content-length": ["587"],
+      "connection": ["close"],
+      "x-forwarded-for": ["162.220.232.104"],
+      "x-real-ip": ["162.220.232.104"],
+      "x-forwarded-host": ["api.somosuniquecapital.com"],
+      "host": ["api.somosuniquecapital.com"]
+    },
+    "method": "POST",
+    "uri": "https://api.somosuniquecapital.com/v1/intechchain/payments/webhook",
+    "request_target": "/v1/intechchain/payments/webhook",
+    "data": {
+      "orderId": "da8972b7-6471-4a8d-a05a-1bdfafeadfa4",
+      "status": "pending",
+      "depositAddress": "bc1qz5lmrumd8utptrkld6vm36625qfnrdedk52cvh",
+      "usdAmount": "10.00",
+      "btcAmount": "0.00010718",
+      "paidAmount": {
+        "api": "blockstream",
+        "confirmedBalance": 0,
+        "pendingBalance": 0,
+        "totalReceived": 0,
+        "totalSpent": 0,
+        "unconfirmedTxCount": 0,
+        "availableBalance": 0,
+        "hasPendingTransactions": false
+      },
+      "createdAt": "2025-04-24T01:38:51.179Z",
+      "updatedAt": "2025-04-24T02:09:01.405Z",
+      "statusMessage": "La orden está pendiente de pago",
+      "warningMessage": null,
+      "paidPercentage": "0.00",
+      "remainingAmount": "0.00010718",
+      "transactionDetails": []
+    }
+  }
+}
