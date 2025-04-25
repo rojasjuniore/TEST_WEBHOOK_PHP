@@ -94,8 +94,8 @@ npm run dev
 
 1. Clona el repositorio:
 ```bash
-git clone [URL_DEL_REPOSITORIO]
-cd [NOMBRE_DEL_DIRECTORIO]
+git clone https://github.com/rojasjuniore/TEST_WEBHOOK_PHP.git
+cd TEST_WEBHOOK_PHP
 ```
 
 2. Instala las dependencias de Node.js:
