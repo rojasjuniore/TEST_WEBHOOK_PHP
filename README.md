@@ -1,5 +1,10 @@
 # Webhook Handler para Pagos en Criptomonedas
 
+> Sistema de procesamiento de pagos en Bitcoin mediante webhooks con verificación de seguridad HMAC SHA256
+
+[![PHP Version](https://img.shields.io/badge/PHP-8.4.6-blue.svg)](https://php.net)
+[![Node.js Version](https://img.shields.io/badge/Node.js-v20.17.0-green.svg)](https://nodejs.org)
+
 ## Cómo Funciona
 
 1. **Recepción del Webhook**
@@ -121,13 +126,51 @@ npm install
 
 ## Desarrollo
 
-Para contribuir al proyecto:
+Para contribuir al proyecto, sigue estos pasos:
 
-1. Haz fork del repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Haz commit de tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+1. **Prepara tu entorno**
+   ```bash
+   git clone https://github.com/rojasjuniore/TEST_WEBHOOK_PHP.git
+   cd TEST_WEBHOOK_PHP
+   npm install
+   ```
+
+2. **Crea una rama para tu feature**
+   ```bash
+   git checkout -b feature/nombre-de-tu-feature
+   ```
+
+3. **Haz tus cambios y prueba**
+   ```bash
+   npm run dev  # Para probar tus cambios
+   ```
+
+4. **Haz commit de tus cambios**
+   ```bash
+   git add .
+   git commit -m "feat: descripción clara de tus cambios"
+   ```
+
+5. **Sube tus cambios**
+   ```bash
+   git push origin feature/nombre-de-tu-feature
+   ```
+
+6. **Abre un Pull Request**
+   - Ve a https://github.com/rojasjuniore/TEST_WEBHOOK_PHP
+   - Haz clic en "New Pull Request"
+   - Selecciona tu rama
+   - Describe tus cambios
+   - Espera la revisión
+
+### Convenciones de Commits
+- `feat:` para nuevas características
+- `fix:` para correcciones de errores
+- `docs:` para cambios en la documentación
+- `style:` para cambios de formato
+- `refactor:` para refactorización de código
+- `test:` para pruebas
+- `chore:` para tareas de mantenimiento
 
 ## Licencia
 
