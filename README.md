@@ -86,8 +86,8 @@ npm run dev
 
 ## Requisitos
 
-- PHP 7.4 o superior
-- Node.js 14 o superior
+- PHP 8.4.6 (con Zend OPcache)
+- Node.js v20.17.0
 - npm (incluido con Node.js)
 
 ## Instalación
