@@ -1,6 +1,80 @@
 # Webhook Handler para Pagos en Criptomonedas
 
-Este proyecto implementa un manejador de webhooks para procesar pagos en criptomonedas, específicamente Bitcoin. Incluye un simulador para probar el webhook localmente.
+## Cómo Funciona
+
+1. **Recepción del Webhook**
+   - El servidor recibe una petición POST con datos de pago en Bitcoin
+   - Los datos vienen en formato JSON con información de la transacción
+   - Se incluye una firma HMAC SHA256 en el header `X-Signature`
+
+2. **Verificación de Seguridad**
+   - Se verifica la firma HMAC usando el secreto compartido
+   - Si la firma no coincide, se rechaza la petición
+   - Se valida que el JSON sea válido
+
+3. **Procesamiento de Datos**
+   - Se extrae información importante como:
+     - ID de la orden
+     - Estado del pago
+     - Montos en USD y BTC
+     - Dirección de depósito
+     - Detalles de transacciones
+
+4. **Respuesta**
+   - Si todo es correcto: devuelve éxito (200) con datos procesados
+   - Si hay error: devuelve código de error (400/401) con mensaje
+
+## Ejemplo de Uso
+
+1. Inicia el servidor:
+```bash
+npm run start
+```
+
+2. Simula un webhook:
+```bash
+npm run simulate
+```
+
+O ejecuta todo junto:
+```bash
+npm run dev
+```
+
+## Formato de Datos
+
+### Webhook Recibido
+```json
+{
+  "orderId": "da8972b7-6471-4a8d-a05a-1bdfafeadfa4",
+  "status": "pending",
+  "depositAddress": "bc1qz5lmrumd8utptrkld6vm36625qfnrdedk52cvh",
+  "usdAmount": "10.00",
+  "btcAmount": "0.00010718",
+  "paidAmount": {
+    "api": "blockstream",
+    "confirmedBalance": 0,
+    "pendingBalance": 0,
+    "totalReceived": 0,
+    "totalSpent": 0,
+    "unconfirmedTxCount": 0,
+    "availableBalance": 0,
+    "hasPendingTransactions": false
+  }
+}
+```
+
+### Respuesta Exitosa
+```json
+{
+  "success": true,
+  "message": "Webhook procesado correctamente",
+  "orderId": "da8972b7-6471-4a8d-a05a-1bdfafeadfa4",
+  "status": "pending",
+  "usdAmount": "10.00",
+  "btcAmount": "0.00010718"
+}
+```
 
 ## Características
 
@@ -37,83 +111,6 @@ npm install
 ├── simulate_webhook.js  # Simulador de webhook
 ├── package.json         # Configuración de Node.js
 └── README.md           # Este archivo
-```
-
-## Uso
-
-### Iniciar el Servidor PHP
-
-```bash
-npm run start
-```
-
-### Simular un Webhook
-
-```bash
-npm run simulate
-```
-
-### Ejecutar Todo en un Solo Comando
-
-```bash
-npm run dev
-```
-
-## Formato del Webhook
-
-### Payload Esperado
-
-```json
-{
-  "orderId": "string",
-  "status": "string",
-  "depositAddress": "string",
-  "usdAmount": "string",
-  "btcAmount": "string",
-  "paidAmount": {
-    "api": "string",
-    "confirmedBalance": number,
-    "pendingBalance": number,
-    "totalReceived": number,
-    "totalSpent": number,
-    "unconfirmedTxCount": number,
-    "availableBalance": number,
-    "hasPendingTransactions": boolean
-  },
-  "createdAt": "string",
-  "updatedAt": "string",
-  "statusMessage": "string",
-  "warningMessage": "string|null",
-  "paidPercentage": "string",
-  "remainingAmount": "string",
-  "transactionDetails": []
-}
-```
-
-### Headers Requeridos
-
-- `X-Signature`: Firma HMAC SHA256 del payload
-- `Content-Type`: application/json
-
-### Respuestas
-
-#### Éxito (200)
-```json
-{
-  "success": true,
-  "message": "Webhook procesado correctamente",
-  "orderId": "string",
-  "status": "string",
-  "usdAmount": "string",
-  "btcAmount": "string"
-}
-```
-
-#### Error (400/401)
-```json
-{
-  "error": "string"
-}
 ```
 
 ## Seguridad
